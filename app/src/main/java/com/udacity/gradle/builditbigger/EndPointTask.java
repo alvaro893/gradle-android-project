@@ -1,0 +1,65 @@
+/**
+ * Copyright (C) 2016 Alvaro Bolanos Rodriguez
+ */
+package com.udacity.gradle.builditbigger;
+
+import android.os.AsyncTask;
+import android.util.Log;
+
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+
+import java.io.IOException;
+
+import es.alvaroweb.jokegcm.myApi.MyApi;
+
+/*
+ * TODO: Create JavaDoc
+ */
+public class EndPointTask extends AsyncTask<Void, Void, String> {
+    private static final String URL = "http://10.0.2.2:8080/_ah/api/";
+    private static final String DEBUG_TAG = EndPointTask.class.getSimpleName();
+    MyApi myApiService = null;
+    private OnGetResultListener mListener;
+
+    public EndPointTask(OnGetResultListener mListener) {
+        this.mListener = mListener;
+    }
+
+    @Override
+    protected String doInBackground(Void... voids) {
+        if(myApiService == null){
+            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
+                    new AndroidJsonFactory(), null);
+            builder.setRootUrl(URL);
+            builder.setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+                @Override
+                public void initialize(AbstractGoogleClientRequest<?> request) throws IOException {
+                    request.setDisableGZipContent(true);
+                }
+            });
+            myApiService = builder.build();
+        }
+
+        try {
+            String data = myApiService.getJoke().execute().getData();
+            Log.d(DEBUG_TAG, data);
+            return data;
+
+        } catch (IOException e) {
+            Log.d(DEBUG_TAG, e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        mListener.onGetResult(s);
+    }
+
+    public interface OnGetResultListener{
+        void onGetResult(String s);
+    }
+}

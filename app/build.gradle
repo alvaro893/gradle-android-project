@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
 
 android {
     compileSdkVersion 24
@@ -10,6 +12,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -22,9 +25,14 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // Added for AdMob
-    compile project(':jokelib')
-    compile project(':andlibrary')
     compile 'com.google.android.gms:play-services:9.2.1'
     compile 'com.android.support:support-v4:24.1.1'
+    // module dependencies
+    compile project(':andlibrary')
     compile project(path: ':JokeGcm', configuration: 'android-endpoints')
+    // butter knife
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+
+
 }
