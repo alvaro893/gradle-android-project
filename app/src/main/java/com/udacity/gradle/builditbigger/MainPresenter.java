@@ -20,12 +20,12 @@ public class MainPresenter {
     }
 
     public void fetchJoke(){
-        EndPointTask endPointTask = new EndPointTask(new EndPointTask.OnGetResultListener() {
+        GetJokeTask getJokeTask = new GetJokeTask(new GetJokeTask.OnGetResultListener() {
             @Override
             public void onGetResult(String s) {
                 mView.openJokeActivity(s);
             }
         });
-        endPointTask.execute();
+        getJokeTask.execute();
     }
 }

@@ -18,13 +18,13 @@ import es.alvaroweb.jokegcm.myApi.MyApi;
 /*
  * TODO: Create JavaDoc
  */
-public class EndPointTask extends AsyncTask<Void, Void, String> {
+public class GetJokeTask extends AsyncTask<Void, Void, String> {
     private static final String URL = "http://10.0.2.2:8080/_ah/api/";
-    private static final String DEBUG_TAG = EndPointTask.class.getSimpleName();
+    private static final String DEBUG_TAG = GetJokeTask.class.getSimpleName();
     MyApi myApiService = null;
     private OnGetResultListener mListener;
 
-    public EndPointTask(OnGetResultListener mListener) {
+    public GetJokeTask(OnGetResultListener mListener) {
         this.mListener = mListener;
     }
 
