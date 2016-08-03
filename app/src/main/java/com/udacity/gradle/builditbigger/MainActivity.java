@@ -24,7 +24,7 @@ import es.alvaroweb.jokegcm.myApi.MyApi;
 public class MainActivity extends AppCompatActivity  {
 
     private static final String DEBUG_TAG = MainActivity.class.getSimpleName();
-    private Context mContext;
+    protected Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

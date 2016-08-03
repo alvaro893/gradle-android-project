@@ -25,7 +25,7 @@ import es.alvaroweb.andlibrary.JokeActivity;
  */
 public class MainActivityFragment extends Fragment implements MainView<MainPresenter> {
 
-    private MainPresenter mPresenter;
+    protected MainPresenter mPresenter;
     @BindView(R.id.adView) AdView mAdView;
 
 
