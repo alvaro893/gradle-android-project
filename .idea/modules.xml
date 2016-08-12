@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GradleProject.iml" filepath="$PROJECT_DIR$/GradleProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/JokeGcm/JokeGcm.iml" filepath="$PROJECT_DIR$/JokeGcm/JokeGcm.iml" />
       <module fileurl="file://$PROJECT_DIR$/andlibrary/andlibrary.iml" filepath="$PROJECT_DIR$/andlibrary/andlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gradle-android-project.iml" filepath="$PROJECT_DIR$/gradle-android-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/jokelib/jokelib.iml" filepath="$PROJECT_DIR$/jokelib/jokelib.iml" />
     </modules>
   </component>
