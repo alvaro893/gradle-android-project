@@ -19,7 +19,7 @@ import es.alvaroweb.jokegcm.myApi.MyApi;
  * TODO: Create JavaDoc
  */
 public class GetJokeTask extends AsyncTask<Void, Void, String> {
-    private static final String URL = "http://10.0.2.2:8080/_ah/api/";
+    private static final String URL = "http://jokegcm.appspot.com/_ah/api/";
     private static final String DEBUG_TAG = GetJokeTask.class.getSimpleName();
     MyApi myApiService = null;
     private OnGetResultListener mListener;
@@ -34,12 +34,6 @@ public class GetJokeTask extends AsyncTask<Void, Void, String> {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null);
             builder.setRootUrl(URL);
-            builder.setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
-                @Override
-                public void initialize(AbstractGoogleClientRequest<?> request) throws IOException {
-                    request.setDisableGZipContent(true);
-                }
-            });
             myApiService = builder.build();
         }
 
