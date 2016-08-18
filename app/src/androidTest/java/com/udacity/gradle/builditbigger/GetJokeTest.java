@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 import static junit.framework.Assert.*;
 
 /*
- * TODO: Create JavaDoc
+ * tests the async call to the gcm library
  */
 @RunWith(AndroidJUnit4.class)
 public class GetJokeTest {
