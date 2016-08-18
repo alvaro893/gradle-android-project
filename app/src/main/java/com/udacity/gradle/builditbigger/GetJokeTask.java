@@ -19,7 +19,7 @@ import es.alvaroweb.jokegcm.myApi.MyApi;
  * task to call gcm server
  */
 public class GetJokeTask extends AsyncTask<Void, Void, String> {
-    private static final String URL = "httpsgi://jokegcm.appspot.com/_ah/api/";
+    private static final String URL = "https://jokegcm.appspot.com/_ah/api/";
     private static final String DEBUG_TAG = GetJokeTask.class.getSimpleName();
     MyApi myApiService = null;
     private OnGetResultListener mListener;
