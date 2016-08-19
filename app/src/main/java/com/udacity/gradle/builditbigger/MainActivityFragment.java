@@ -32,7 +32,6 @@ public class MainActivityFragment extends Fragment implements MainView<MainPrese
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, root);
-        deactivateSpinner();
 
         return root;
     }
