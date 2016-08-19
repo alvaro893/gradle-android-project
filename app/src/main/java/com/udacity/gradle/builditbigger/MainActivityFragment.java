@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.alvaroweb.andlibrary.JokeActivity;
@@ -17,6 +20,8 @@ import es.alvaroweb.andlibrary.JokeActivity;
 public class MainActivityFragment extends Fragment implements MainView<MainPresenter> {
 
     protected MainPresenter mPresenter;
+    @BindView(R.id.progressBar)
+    ProgressBar spinner;
 
 
     public MainActivityFragment() {
@@ -27,10 +32,17 @@ public class MainActivityFragment extends Fragment implements MainView<MainPrese
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, root);
+        deactivateSpinner();
 
         return root;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        deactivateSpinner();
+    }
 
     @Override
     public void setPresenter(MainPresenter presenter) {
@@ -47,5 +59,16 @@ public class MainActivityFragment extends Fragment implements MainView<MainPrese
         Intent intent = new Intent(getActivity(), JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_ARG, jokeString);
         startActivity(intent);
+    }
+
+    @Override
+    public void activateSpinner() {
+        spinner.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void deactivateSpinner() {
+        spinner.setVisibility(View.GONE);
     }
 }

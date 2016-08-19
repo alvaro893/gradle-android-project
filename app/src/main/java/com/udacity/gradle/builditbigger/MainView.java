@@ -6,4 +6,6 @@ package com.udacity.gradle.builditbigger;
 public interface MainView<T> {
     void setPresenter(T presenter);
     void openJokeActivity(String jokeString);
+    void activateSpinner();
+    void deactivateSpinner();
 }

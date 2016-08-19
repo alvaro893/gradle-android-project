@@ -20,10 +20,12 @@ public class MainPresenter {
     }
 
     public void fetchJoke(){
+        mView.activateSpinner();
         GetJokeTask getJokeTask = new GetJokeTask(new GetJokeTask.OnGetResultListener() {
             @Override
             public void onGetResult(String s) {
                 mView.openJokeActivity(s);
+                mView.deactivateSpinner();
             }
         });
         getJokeTask.execute();

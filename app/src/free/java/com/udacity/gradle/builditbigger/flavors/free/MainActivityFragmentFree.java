@@ -22,8 +22,8 @@ public class MainActivityFragmentFree extends MainActivityFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View root = inflater.inflate(R.layout.fragment_main_free, container, false);
+        // The fragment view is created in the father
+        View root = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, root);
         doAdRequest(mAdView);
         return root;
