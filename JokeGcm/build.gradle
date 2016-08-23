@@ -41,3 +41,28 @@ appengine {
     getDiscoveryDocsOnBuild = true
   }
 }
+
+task turnOnLocalGcm{
+    dependsOn ":JokeGcm:appengineRun"
+    // this is to open the server in daemon mode so the script can continue
+    project(":JokeGcm").afterEvaluate { b ->
+        b.extensions.appengine.daemon = true
+    }
+
+    doLast{
+        println "Local Gcm opened..."
+    }
+}
+
+task testLocalGcm {
+
+    // the test task executes all the tests after open the Gcm server
+    dependsOn turnOnLocalGcm, test
+
+
+    doLast {
+        println "....Finished testing...."
+    }
+    // close the Gcm server on finish
+    finalizedBy  ":JokeGcm:appengineStop"
+}
